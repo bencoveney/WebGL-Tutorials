@@ -1,0 +1,70 @@
+<!doctype html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    
+    <title>WebGL</title>
+    <meta name="description" content="Shmup">
+    <meta name="author" content="Ben Coveney">
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    
+    <script type="text/javascript" src="glMatrix-0.9.5.min.js"></script>
+    
+    <style>
+      body {
+        background-color: #CCC;
+        text-align: center;
+      }
+      
+      h1, p {
+        color: #666;
+        font-family: sans-serif;
+        font-weight: 100;
+      }
+      
+      #playground {
+        background-color: #000;
+        width: 500px;
+        height: 500px;
+      }
+    </style>
+    
+    <!-- Fragment Shader -->
+    <script id="shader-fs" type="x-shader/x-fragment">
+      precision mediump float;
+    
+      void main(void) {
+        gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+      }
+    </script>
+    
+    <!-- Vertex Shader -->
+    <script id="shader-vs" type="x-shader/x-vertex">
+      attribute vec3 aVertexPosition;
+    
+      uniform mat4 uMVMatrix;
+      uniform mat4 uPMatrix;
+    
+      void main(void) {
+        gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+      }
+    </script>
+    
+  </head>
+  
+  <body onload="begin()">
+  
+    <h1>WebGL</h1>
+    
+    <canvas id="playground" width="500" height="500">
+    </canvas>
+    
+    <script src="webgl.js"></script>
+    
+    <p>WebGL innit</p>
+  
+  </body>
+  
+</html>
